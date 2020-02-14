@@ -9,19 +9,22 @@ class ViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let userScriptURL = Bundle.main.url(forResource: "NotificationUserScript", withExtension: "js")!
-    let userScriptCode = try! String(contentsOf: userScriptURL)
-    let userScript = WKUserScript(source: userScriptCode, injectionTime: .atDocumentStart, forMainFrameOnly: false)
     let configuration = WKWebViewConfiguration()
-    configuration.userContentController.addUserScript(userScript)
-    configuration.userContentController.add(self, name: "notify")
+
     configuration.applicationNameForUserAgent = "Version/\(safariVersion()) Safari/0.0.0"
+
+    let notificationUserScript = loadUserScript(name: "NotificationUserScript", injectionTime: .atDocumentEnd)
+    configuration.userContentController.addUserScript(notificationUserScript)
+    configuration.userContentController.add(self, name: "notify")
 
     if let cssUserScript = userScriptForCSS() {
       configuration.userContentController.addUserScript(cssUserScript)
     }
-    
-    webView = WKWebView(frame: self.view.bounds, configuration: configuration)
+
+    var rect = view.bounds
+    rect.size.height += topMarginToCut
+
+    webView = WKWebView(frame: rect, configuration: configuration)
 
     webView.navigationDelegate = self
     webView.uiDelegate = self
@@ -36,6 +39,10 @@ class ViewController: NSViewController {
     self.webView.load(request)
   }
 
+  override func viewDidAppear() {
+    view.window?.delegate = self
+  }
+
   override var representedObject: Any? {
     didSet {
       // Update the view, if already loaded.
@@ -45,7 +52,6 @@ class ViewController: NSViewController {
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
     switch keyPath {
     case "title":
-      self.view.window?.title = webView.title ?? ""
       NSApplication.shared.dockTile.badgeLabel = parseNumber(webView.title)
       break
     default:
@@ -95,7 +101,32 @@ class ViewController: NSViewController {
       forMainFrameOnly: true)
   }
 
+  private func loadUserScript(name: String, injectionTime: WKUserScriptInjectionTime) -> WKUserScript {
+    let userScriptURL = Bundle.main.url(forResource: name, withExtension: "js")!
+    let userScriptCode = try! String(contentsOf: userScriptURL)
+    return WKUserScript(source: userScriptCode, injectionTime: injectionTime, forMainFrameOnly: true)
+  }
+
+  private func updateTitleBarBackground() {
+    guard let window = self.view.window else { return }
+
+    guard let webView = self.webView else {
+      window.backgroundColor = NSColor.white
+      return
+    }
+
+    let snapshotConfiguration = WKSnapshotConfiguration()
+    snapshotConfiguration.rect = CGRect(x: 0, y: topMarginToCut, width: webView.bounds.size.width, height: 1)
+
+    webView.takeSnapshot(with: snapshotConfiguration) { image, error in
+      if let image = image {
+        window.backgroundColor = NSColor(patternImage: image)
+      }
+    }
+  }
+
   private var webView: WKWebView!
+  private let topMarginToCut: CGFloat = 6
 }
 
 extension ViewController: WKNavigationDelegate {
@@ -130,6 +161,13 @@ extension ViewController: WKNavigationDelegate {
 
     decisionHandler(.allow)
   }
+
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    if webView == self.webView {
+      updateTitleBarBackground()
+    }
+  }
+
 }
 
 extension ViewController: WKUIDelegate {
@@ -187,6 +225,16 @@ extension ViewController: WKUIDelegate {
 
 extension ViewController: WKScriptMessageHandler {
   func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    switch message.name {
+    case "notify":
+      handleNotification(message)
+      break
+    default:
+      break
+    }
+  }
+
+  private func handleNotification(_ message: WKScriptMessage) {
     guard
       let data = message.body as? [String: Any],
       let options = data["options"] as? [String: Any]
@@ -204,6 +252,14 @@ extension ViewController: WKScriptMessageHandler {
       if error != nil {
         NSLog(error.debugDescription)
       }
+    }
+  }
+}
+
+extension ViewController: NSWindowDelegate {
+  func windowDidResize(_ notification: Notification) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+      self.updateTitleBarBackground()
     }
   }
 }
