@@ -33,7 +33,7 @@ class ViewController: NSViewController {
 
     webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
 
-    let url = URL(string: "https://www.gmail.com")
+    let url = URL(string: "https://mail.google.com/")
     let request = URLRequest(url: url!)
 
     self.webView.load(request)
@@ -173,32 +173,16 @@ extension ViewController: WKNavigationDelegate {
 extension ViewController: WKUIDelegate {
   func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView?
   {
-    let windowSize = view.bounds.size
+    if windowFeatures.width != nil && windowFeatures.height != nil {
+      let popupViewController = PopupViewController()
 
-    if let width = windowFeatures.width?.intValue, let height = windowFeatures.height?.intValue {
-      let x = windowFeatures.x?.intValue ?? (Int(windowSize.width.native) - width)/2
-      let y = windowFeatures.y?.intValue ?? (Int(windowSize.height.native) - height)/2
+      let wv = popupViewController.showPopupWindow(
+        createWebViewWith: configuration,
+        for: navigationAction,
+        windowFeatures: windowFeatures,
+        parentFrame: view.window!.frame)
 
-      /*
-      let contentRect = NSRect(x: x, y: y, width: width, height: height)
-      // Popup window
-      let window = NSWindow(
-        contentRect: contentRect,
-        styleMask: [.titled, .closable, .resizable],
-        backing: .buffered,
-        defer: false)
-      */
-
-      let frame = NSRect(x: x, y: y, width: width, height: height)
-      let webView = WKWebView(frame: frame, configuration: configuration)
-      webView.autoresizingMask = [.height, .width]
-      webView.navigationDelegate = self
-      webView.uiDelegate = self
-      self.view.addSubview(webView)
-      // window.contentView?.addSubview(webView)
-
-      // NSApplication.shared.runModal(for: window)
-      return webView
+      return wv
     }
 
     // A new tab
@@ -262,4 +246,9 @@ extension ViewController: NSWindowDelegate {
       self.updateTitleBarBackground()
     }
   }
+
+  func windowWillClose(_ notification: Notification) {
+    webView.removeObserver(self, forKeyPath: "title")
+  }
+
 }
