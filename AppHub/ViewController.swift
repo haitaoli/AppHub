@@ -205,6 +205,56 @@ extension ViewController: WKUIDelegate {
   func webViewDidClose(_ webView: WKWebView) {
     webView.removeFromSuperview()
   }
+
+  func webView(
+    _ webView: WKWebView,
+    runJavaScriptAlertPanelWithMessage message: String,
+    initiatedByFrame frame: WKFrameInfo,
+    completionHandler: @escaping () -> Void)
+  {
+    guard let window = view.window else { return }
+
+    let alert = NSAlert()
+
+    alert.messageText = message
+    alert.addButton(withTitle: "OK")
+
+    alert.beginSheetModal(for: window) { _ in
+      completionHandler()
+    }
+  }
+
+  func webView(
+    _ webView: WKWebView,
+    runJavaScriptConfirmPanelWithMessage message: String,
+    initiatedByFrame frame: WKFrameInfo,
+    completionHandler: @escaping (Bool) -> Void)
+  {
+    guard let window = view.window else {
+      completionHandler(false)
+      return
+    }
+
+    let alert = NSAlert()
+
+    alert.messageText = message
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
+
+    alert.beginSheetModal(for: window) { response in
+      completionHandler(response == .alertFirstButtonReturn)
+    }
+  }
+
+  func webView(
+    _ webView: WKWebView,
+    runJavaScriptTextInputPanelWithPrompt prompt: String,
+    defaultText: String?,
+    initiatedByFrame frame: WKFrameInfo,
+    completionHandler: @escaping (String?) -> Void)
+  {
+    // TODO: implement
+  }
 }
 
 extension ViewController: WKScriptMessageHandler {
