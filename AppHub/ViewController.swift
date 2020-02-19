@@ -17,6 +17,10 @@ class ViewController: NSViewController {
     configuration.userContentController.addUserScript(notificationUserScript)
     configuration.userContentController.add(self, name: "notify")
 
+    let gmailUserScript = loadUserScript(name: "gmail", injectionTime: .atDocumentEnd)
+    configuration.userContentController.addUserScript(gmailUserScript)
+    configuration.userContentController.add(self, name: "badge")
+
     if let cssUserScript = userScriptForCSS() {
       configuration.userContentController.addUserScript(cssUserScript)
     }
@@ -50,6 +54,7 @@ class ViewController: NSViewController {
   }
 
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    /*
     switch keyPath {
     case "title":
       NSApplication.shared.dockTile.badgeLabel = parseNumber(webView.title)
@@ -57,6 +62,7 @@ class ViewController: NSViewController {
     default:
       break
     }
+    */
   }
 
   private func safariVersion() -> String {
@@ -67,6 +73,7 @@ class ViewController: NSViewController {
     return safariVersion
   }
 
+  /*
   private func parseNumber(_ title: String?) -> String? {
     guard let title = title else { return nil }
 
@@ -81,7 +88,8 @@ class ViewController: NSViewController {
 
     return nil
   }
-
+  */
+  
   private func userScriptForCSS() -> WKUserScript? {
     guard let path = Bundle.main.path(forResource: "site", ofType: "css") else {
       return nil
@@ -263,6 +271,9 @@ extension ViewController: WKScriptMessageHandler {
     case "notify":
       handleNotification(message)
       break
+    case "badge":
+      displayBadgeCount(message)
+      break
     default:
       break
     }
@@ -287,6 +298,15 @@ extension ViewController: WKScriptMessageHandler {
         NSLog(error.debugDescription)
       }
     }
+  }
+
+  private func displayBadgeCount(_ message: WKScriptMessage) {
+    guard
+      let data = message.body as? [String: Any],
+      let badge = data["count"] as? Int
+    else { return }
+
+    NSApplication.shared.dockTile.badgeLabel = badge > 0 ? String(badge) : nil
   }
 }
 
