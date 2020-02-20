@@ -1,7 +1,11 @@
 function updateBadgeCount() {
   var link = document.querySelector("link[rel*='icon']");
-  var unread = link.href.match(/unreadcountfavicon\/(\d+)_/)[1];
-  window.webkit.messageHandlers.badge.postMessage({"count": parseInt(unread)});
+  var match = link.href.match(/unreadcountfavicon\/(\d+)_/);
+
+  if (match != null) {
+    var unreadCount = parseInt(match[1]);
+    window.webkit.messageHandlers.badge.postMessage({"count": unreadCount});
+  }
 }
 
 setInterval(updateBadgeCount, 60000);

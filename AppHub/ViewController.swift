@@ -17,11 +17,11 @@ class ViewController: NSViewController {
     configuration.userContentController.addUserScript(notificationUserScript)
     configuration.userContentController.add(self, name: "notify")
 
-    let gmailUserScript = loadUserScript(name: "gmail", injectionTime: .atDocumentEnd)
+    let gmailUserScript = loadUserScript(name: "Gmail/site", injectionTime: .atDocumentEnd)
     configuration.userContentController.addUserScript(gmailUserScript)
     configuration.userContentController.add(self, name: "badge")
 
-    if let cssUserScript = userScriptForCSS() {
+    if let cssUserScript = userScriptForCSS(forResource: "Gmail/site") {
       configuration.userContentController.addUserScript(cssUserScript)
     }
 
@@ -90,8 +90,8 @@ class ViewController: NSViewController {
   }
   */
   
-  private func userScriptForCSS() -> WKUserScript? {
-    guard let path = Bundle.main.path(forResource: "site", ofType: "css") else {
+  private func userScriptForCSS(forResource: String) -> WKUserScript? {
+    guard let path = Bundle.main.path(forResource: forResource, ofType: "css") else {
       return nil
     }
 

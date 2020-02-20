@@ -9,17 +9,16 @@
 /* Begin PBXBuildFile section */
 		30194B3923F9F889008DB21A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30194B3823F9F889008DB21A /* PopupViewController.swift */; };
 		30483DB823E5DDA2000B9FF9 /* NotificationUserScript.js in Resources */ = {isa = PBXBuildFile; fileRef = 30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */; };
-		3089E70C23FDC1C7000D66E0 /* gmail.js in Resources */ = {isa = PBXBuildFile; fileRef = 3089E70B23FDC1C7000D66E0 /* gmail.js */; };
 		30BFCB4023E3593E00C3CFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCB3F23E3593E00C3CFCD /* AppDelegate.swift */; };
 		30BFCB4223E3593E00C3CFCD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCB4123E3593E00C3CFCD /* ViewController.swift */; };
 		30BFCB4423E3593E00C3CFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCB4323E3593E00C3CFCD /* Assets.xcassets */; };
 		30BFCB4723E3593E00C3CFCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCB4523E3593E00C3CFCD /* Main.storyboard */; };
+		30E0062B23FE353800CA9B21 /* Gmail in Resources */ = {isa = PBXBuildFile; fileRef = 30E0062523FE312500CA9B21 /* Gmail */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30194B3823F9F889008DB21A /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = NotificationUserScript.js; sourceTree = "<group>"; };
-		3089E70B23FDC1C7000D66E0 /* gmail.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = gmail.js; sourceTree = "<group>"; };
 		30BFCB3C23E3593E00C3CFCD /* Gmail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gmail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BFCB3F23E3593E00C3CFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30BFCB4123E3593E00C3CFCD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +26,7 @@
 		30BFCB4623E3593E00C3CFCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30BFCB4823E3593E00C3CFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BFCB4923E3593E00C3CFCD /* AppHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppHub.entitlements; sourceTree = "<group>"; };
+		30E0062523FE312500CA9B21 /* Gmail */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Gmail; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +59,7 @@
 		30BFCB3E23E3593E00C3CFCD /* AppHub */ = {
 			isa = PBXGroup;
 			children = (
+				30E0062523FE312500CA9B21 /* Gmail */,
 				30BFCB3F23E3593E00C3CFCD /* AppDelegate.swift */,
 				30BFCB4123E3593E00C3CFCD /* ViewController.swift */,
 				30BFCB4323E3593E00C3CFCD /* Assets.xcassets */,
@@ -67,7 +68,6 @@
 				30BFCB4923E3593E00C3CFCD /* AppHub.entitlements */,
 				30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */,
 				30194B3823F9F889008DB21A /* PopupViewController.swift */,
-				3089E70B23FDC1C7000D66E0 /* gmail.js */,
 			);
 			path = AppHub;
 			sourceTree = "<group>";
@@ -130,8 +130,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E0062B23FE353800CA9B21 /* Gmail in Resources */,
 				30BFCB4423E3593E00C3CFCD /* Assets.xcassets in Resources */,
-				3089E70C23FDC1C7000D66E0 /* gmail.js in Resources */,
 				30483DB823E5DDA2000B9FF9 /* NotificationUserScript.js in Resources */,
 				30BFCB4723E3593E00C3CFCD /* Main.storyboard in Resources */,
 			);
