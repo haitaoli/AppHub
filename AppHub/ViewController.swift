@@ -25,10 +25,7 @@ class ViewController: NSViewController {
       configuration.userContentController.addUserScript(cssUserScript)
     }
 
-    var rect = view.bounds
-    rect.size.height += topMarginToCut
-
-    webView = WKWebView(frame: rect, configuration: configuration)
+    webView = WKWebView(frame: view.bounds, configuration: configuration)
 
     webView.navigationDelegate = self
     webView.uiDelegate = self
@@ -122,19 +119,9 @@ class ViewController: NSViewController {
       window.backgroundColor = NSColor.white
       return
     }
-
-    let snapshotConfiguration = WKSnapshotConfiguration()
-    snapshotConfiguration.rect = CGRect(x: 0, y: topMarginToCut, width: webView.bounds.size.width, height: 1)
-
-    webView.takeSnapshot(with: snapshotConfiguration) { image, error in
-      if let image = image {
-        window.backgroundColor = NSColor(patternImage: image)
-      }
-    }
   }
 
   private var webView: WKWebView!
-  private let topMarginToCut: CGFloat = 6
 }
 
 extension ViewController: WKNavigationDelegate {
