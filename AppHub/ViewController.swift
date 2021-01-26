@@ -38,6 +38,13 @@ class ViewController: NSViewController {
     let request = URLRequest(url: url!)
 
     self.webView.load(request)
+
+    var titleBarFrame = view.bounds
+    titleBarFrame.origin.y = view.bounds.size.height - 20
+    titleBarFrame.size.height = 20
+    let titleBar = TitleBar(frame: titleBarFrame)
+    titleBar.autoresizingMask = [.width, .minYMargin]
+    view.addSubview(titleBar)
   }
 
   override func viewDidAppear() {

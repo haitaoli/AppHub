@@ -7,16 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300BC07A2406A7A500FAA761 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300BC0792406A7A500FAA761 /* TitleBar.swift */; };
 		30194B3923F9F889008DB21A /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30194B3823F9F889008DB21A /* PopupViewController.swift */; };
 		30483DB823E5DDA2000B9FF9 /* NotificationUserScript.js in Resources */ = {isa = PBXBuildFile; fileRef = 30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */; };
 		30BFCB4023E3593E00C3CFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCB3F23E3593E00C3CFCD /* AppDelegate.swift */; };
 		30BFCB4223E3593E00C3CFCD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCB4123E3593E00C3CFCD /* ViewController.swift */; };
 		30BFCB4423E3593E00C3CFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCB4323E3593E00C3CFCD /* Assets.xcassets */; };
 		30BFCB4723E3593E00C3CFCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCB4523E3593E00C3CFCD /* Main.storyboard */; };
+		30DDDF9024A25FA1004FB3C6 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300BC0792406A7A500FAA761 /* TitleBar.swift */; };
+		30DDDF9124A25FA1004FB3C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCB4123E3593E00C3CFCD /* ViewController.swift */; };
+		30DDDF9224A25FA1004FB3C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFCB3F23E3593E00C3CFCD /* AppDelegate.swift */; };
+		30DDDF9324A25FA1004FB3C6 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30194B3823F9F889008DB21A /* PopupViewController.swift */; };
+		30DDDF9724A25FA1004FB3C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCB4323E3593E00C3CFCD /* Assets.xcassets */; };
+		30DDDF9824A25FA1004FB3C6 /* NotificationUserScript.js in Resources */ = {isa = PBXBuildFile; fileRef = 30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */; };
+		30DDDF9924A25FA1004FB3C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30BFCB4523E3593E00C3CFCD /* Main.storyboard */; };
 		30E0062B23FE353800CA9B21 /* Gmail in Resources */ = {isa = PBXBuildFile; fileRef = 30E0062523FE312500CA9B21 /* Gmail */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300BC0792406A7A500FAA761 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 		30194B3823F9F889008DB21A /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = NotificationUserScript.js; sourceTree = "<group>"; };
 		30BFCB3C23E3593E00C3CFCD /* Gmail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gmail.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,11 +35,20 @@
 		30BFCB4623E3593E00C3CFCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		30BFCB4823E3593E00C3CFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BFCB4923E3593E00C3CFCD /* AppHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppHub.entitlements; sourceTree = "<group>"; };
+		30DDDF9D24A25FA1004FB3C6 /* Google Docs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Google Docs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		30DDDF9E24A25FA1004FB3C6 /* Gmail copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Gmail copy-Info.plist"; path = "/Users/haitaoli/projects/AppHub/Gmail copy-Info.plist"; sourceTree = "<absolute>"; };
 		30E0062523FE312500CA9B21 /* Gmail */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Gmail; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		30BFCB3923E3593E00C3CFCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30DDDF9424A25FA1004FB3C6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +63,7 @@
 			children = (
 				30BFCB3E23E3593E00C3CFCD /* AppHub */,
 				30BFCB3D23E3593E00C3CFCD /* Products */,
+				30DDDF9E24A25FA1004FB3C6 /* Gmail copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				30BFCB3C23E3593E00C3CFCD /* Gmail.app */,
+				30DDDF9D24A25FA1004FB3C6 /* Google Docs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,6 +79,7 @@
 		30BFCB3E23E3593E00C3CFCD /* AppHub */ = {
 			isa = PBXGroup;
 			children = (
+				30DDDF9F24A26112004FB3C6 /* Google Docs */,
 				30E0062523FE312500CA9B21 /* Gmail */,
 				30BFCB3F23E3593E00C3CFCD /* AppDelegate.swift */,
 				30BFCB4123E3593E00C3CFCD /* ViewController.swift */,
@@ -68,8 +89,16 @@
 				30BFCB4923E3593E00C3CFCD /* AppHub.entitlements */,
 				30483DB723E5DDA2000B9FF9 /* NotificationUserScript.js */,
 				30194B3823F9F889008DB21A /* PopupViewController.swift */,
+				300BC0792406A7A500FAA761 /* TitleBar.swift */,
 			);
 			path = AppHub;
+			sourceTree = "<group>";
+		};
+		30DDDF9F24A26112004FB3C6 /* Google Docs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Google Docs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,13 +121,30 @@
 			productReference = 30BFCB3C23E3593E00C3CFCD /* Gmail.app */;
 			productType = "com.apple.product-type.application";
 		};
+		30DDDF8E24A25FA1004FB3C6 /* Google Docs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30DDDF9A24A25FA1004FB3C6 /* Build configuration list for PBXNativeTarget "Google Docs" */;
+			buildPhases = (
+				30DDDF8F24A25FA1004FB3C6 /* Sources */,
+				30DDDF9424A25FA1004FB3C6 /* Frameworks */,
+				30DDDF9524A25FA1004FB3C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Google Docs";
+			productName = AppHub;
+			productReference = 30DDDF9D24A25FA1004FB3C6 /* Google Docs.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		30BFCB3423E3593E00C3CFCD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Haitao Li";
 				TargetAttributes = {
@@ -121,6 +167,7 @@
 			projectRoot = "";
 			targets = (
 				30BFCB3B23E3593E00C3CFCD /* Gmail */,
+				30DDDF8E24A25FA1004FB3C6 /* Google Docs */,
 			);
 		};
 /* End PBXProject section */
@@ -137,6 +184,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30DDDF9524A25FA1004FB3C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30DDDF9724A25FA1004FB3C6 /* Assets.xcassets in Resources */,
+				30DDDF9824A25FA1004FB3C6 /* NotificationUserScript.js in Resources */,
+				30DDDF9924A25FA1004FB3C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -144,9 +201,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300BC07A2406A7A500FAA761 /* TitleBar.swift in Sources */,
 				30BFCB4223E3593E00C3CFCD /* ViewController.swift in Sources */,
 				30BFCB4023E3593E00C3CFCD /* AppDelegate.swift in Sources */,
 				30194B3923F9F889008DB21A /* PopupViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		30DDDF8F24A25FA1004FB3C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30DDDF9024A25FA1004FB3C6 /* TitleBar.swift in Sources */,
+				30DDDF9124A25FA1004FB3C6 /* ViewController.swift in Sources */,
+				30DDDF9224A25FA1004FB3C6 /* AppDelegate.swift in Sources */,
+				30DDDF9324A25FA1004FB3C6 /* PopupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +382,42 @@
 			};
 			name = Release;
 		};
+		30DDDF9B24A25FA1004FB3C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = GmailAppIcon;
+				CODE_SIGN_ENTITLEMENTS = AppHub/AppHub.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Gmail copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = haitaoli.AppHub.gmail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		30DDDF9C24A25FA1004FB3C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = GmailAppIcon;
+				CODE_SIGN_ENTITLEMENTS = AppHub/AppHub.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Gmail copy-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = haitaoli.AppHub.gmail;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -330,6 +435,15 @@
 			buildConfigurations = (
 				30BFCB4D23E3593E00C3CFCD /* Debug */,
 				30BFCB4E23E3593E00C3CFCD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30DDDF9A24A25FA1004FB3C6 /* Build configuration list for PBXNativeTarget "Google Docs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30DDDF9B24A25FA1004FB3C6 /* Debug */,
+				30DDDF9C24A25FA1004FB3C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
